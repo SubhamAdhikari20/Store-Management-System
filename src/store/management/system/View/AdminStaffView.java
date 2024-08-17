@@ -13,8 +13,6 @@ import javax.swing.table.*;
 
 import store.management.system.View.AdminHomeView;
 import store.management.system.Controller.AdminStaffController;
-import store.management.system.DAO.AdminStaffDAO;
-import store.management.system.Model.AdminStaffModel;
 
 public class AdminStaffView extends CustomPanel {
 
@@ -108,22 +106,6 @@ public class AdminStaffView extends CustomPanel {
         scrollPane.setBounds(30, 187, 1143, 350);
         super.add(scrollPane);
 
-        /*
-        // Table Model
-        Object[][] rowData = {{"S001", "John Doe", "Manager", "Sales"}, {"S001", "John Doe", "Manager", "Sales"}}; 
-        String[] column = {"Staff ID", "Staff Name", "Position", "Department"};
-        tableModel = new DefaultTableModel(rowData, column);
-        
-        // Adding some sample data to the table model
-        tableModel.addRow(new Object[]{"S001", "John Doe", "Manager", "Sales"});
-        tableModel.addRow(new Object[]{"S002", "Jane Smith", "Assistant", "HR"});
-        
-        
-        // Staff Table103
-        staffTable = new JTable(tableModel);
-        staffTable.setFont(new Font("Arial", Font.PLAIN, 14));
-        staffTable.setRowHeight(25);
-        staffTable.setAutoCreateRowSorter(true);
          */
         // Add Staff Button
         addStaffButton = new CustomButton();
@@ -419,7 +401,6 @@ class AddStaffPanel extends CustomPanel {
         super.add(addButton);
 
         // Table Model
-        AdminStaffDAO adminStaffDAO = new AdminStaffDAO();
         Object[][] rowData = adminStaffDAO.fetchStaffInfo();
         column = new String[]{"Staff ID", "Staff Name", "Gender", "Mobile"};
         tableModel = new DefaultTableModel(rowData, column);

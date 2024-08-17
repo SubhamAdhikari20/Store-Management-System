@@ -8,9 +8,6 @@ import javax.swing.border.EmptyBorder;
 
 // Modules
 import store.management.system.View.AdminHomeView;
-//import store.management.system.DAO.AdminHomeDAO;
-//import store.management.system.Model.AdminHomeModel;
-import store.management.system.View.AdminStaffView;
 
 public class AdminHomeController {
     private AdminHomeView adminHomeView;
@@ -26,7 +23,6 @@ public class AdminHomeController {
     class HomeMenuButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            adminHomeView.getCardLayout().show(adminHomeView.getMainPanel(), "Home");
         }
         
     }
@@ -34,14 +30,12 @@ public class AdminHomeController {
     class StaffMenuButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            adminHomeView.getCardLayout().show(adminHomeView.getMainPanel(), "Staff");
         }
     }
     
     class InvoiceMenuButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            adminHomeView.getCardLayout().show(adminHomeView.getMainPanel(), "Invoice");
         }
     }
     

@@ -13,7 +13,6 @@ import javax.swing.border.EmptyBorder;
 
 // Modules
 import store.management.system.Controller.AdminHomeController;
-import store.management.system.Controller.AdminStaffController;
 //import store.management.system.View.CustomSwing.*;
 
 public class AdminHomeView extends JFrame{
@@ -21,10 +20,7 @@ public class AdminHomeView extends JFrame{
     CustomPanel mainPanel;
     HomePanel homePanel;
     CardLayout cardLayout;
-    AdminStaffView staffPanel;
-    AdminStaffController staffController;
-    AdminInvoiceView invoicePanel;
-    AddStaffPanel addStaffPanel;
+
     
     
     
@@ -146,58 +142,8 @@ public class AdminHomeView extends JFrame{
         menuPanel.add(homeButton);
         menuPanel.add(staffButton);
         menuPanel.add(invoiceButton);
-        
 
         
-        // Main Panel with CardLayout -> lets us to stack Panel over another
-        cardLayout = new CardLayout();
-        mainPanel = new CustomPanel();
-        mainPanel.setLayout(cardLayout);
-        mainPanel.setBounds(225, 100, 1205, 620);
-        this.add(mainPanel);
-        
-        // Panels to be added
-        homePanel = new HomePanel();
-        staffPanel = new AdminStaffView(this);      // Pass AdminHomeView instance to AdminStaffView
-        invoicePanel = new AdminInvoiceView();
-
-        // Adding the panel in CardLayout
-        mainPanel.add(homePanel, "Home");
-        mainPanel.add(staffPanel, "Staff");
-        mainPanel.add(invoicePanel, "Invoice");
-
-        
-        // Set initial panel
-        cardLayout.show(mainPanel, "Staff");
-        
-        
-        this.add(mainPanel);
-        setVisible(true);
-        
-        // Add ActionListeners to side buttons
-        AdminHomeController adminHomeController = new AdminHomeController(this);
-    }
-    
-    
-    public CardLayout getCardLayout(){
-        return cardLayout;
-    }
-    
-    public CustomPanel getMainPanel(){
-        return mainPanel;
-    }
-    
-    public CustomPanel getHomePanel(){
-        return homePanel;
-    }
-    
-    public CustomPanel getStaffPanel(){
-        return staffPanel;
-    }
-    
-    public CustomPanel getInvoicePanel(){
-        return invoicePanel;
-    }
     
     public void addHomeMenuButtonListner(ActionListener addHomeMenuButtonListner){
         homeButton.addActionListener(addHomeMenuButtonListner);

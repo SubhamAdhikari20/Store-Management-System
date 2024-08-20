@@ -2,7 +2,7 @@
 package store.management.system.DAO;
 
 import javax.swing.*;
-import java.sql.*;
+import java.sql.
 
 import store.management.system.Model.LoginModel;
 import store.management.system.Database.DatabaseConnection;

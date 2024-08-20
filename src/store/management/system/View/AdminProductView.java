@@ -102,7 +102,7 @@ public class AdminProductView extends CustomPanel {
         add(clearButton);
 
         // Create table for products
-        String[] columnNames = {"Product ID", "Product Name", "Category", "Price", "Quantity"};
+        String[] columnNames = { "Product ID", "Product Name", "Category", "Price", "Quantity" };
         tableModel = new DefaultTableModel(columnNames, 0);
         productTable = new JTable(tableModel);
 
@@ -155,7 +155,7 @@ public class AdminProductView extends CustomPanel {
             double price = Double.parseDouble(priceField.getText());
             int quantity = Integer.parseInt(quantityField.getText());
 
-            tableModel.addRow(new Object[]{productId, productName, category, price, quantity});
+            tableModel.addRow(new Object[] { productId, productName, category, price, quantity });
             clearFields();
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Please enter valid numbers for price and quantity.");

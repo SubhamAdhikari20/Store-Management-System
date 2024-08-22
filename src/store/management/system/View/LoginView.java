@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.border.EmptyBorder;
 
 import store.management.system.Controller.LoginController;
+import store.management.system.DAO.LoginDAO;
 
 public class LoginView extends JFrame{
     CustomButton loginButton;
@@ -227,8 +228,8 @@ public class LoginView extends JFrame{
         
         super.setVisible(true);
         
-//        LoginDAO loginDAO = new LoginDAO();
-//        LoginController loginController = new LoginController(this, loginDAO);
+        LoginDAO loginDAO = new LoginDAO();
+        LoginController loginController = new LoginController(this, loginDAO);
         
     }
   

@@ -1,11 +1,12 @@
 package store.management.system.Model;
 
-
+import store.management.system.DAO.LoginDAO;
         
 
 public class LoginModel {
     private String username;
     private String password;
+    private LoginDAO userDAO;
     public LoginModel(){
         
     }

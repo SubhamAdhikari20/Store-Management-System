@@ -8,17 +8,20 @@ import javax.swing.border.EmptyBorder;
 
 // Modules
 import store.management.system.View.*;
+import store.management.system.DAO.LoginDAO;
 import store.management.system.Model.LoginModel;
 
 
 
 public class LoginController{
+    private final LoginDAO loginDAO;
     private final LoginView loginView;
 //    String username;
 //    String password;
 //    LoginModel userModel;
     
-    public LoginController(LoginView loginView) {
+    public LoginController(LoginView loginView, LoginDAO loginDAO) {
+        this.loginDAO = loginDAO;
         this.loginView = loginView;
         
         this.loginView.addLoginListener(new LoginListener());
@@ -34,6 +37,12 @@ public class LoginController{
             if (username.equals("") || password.equals("")){
             JOptionPane.showMessageDialog(loginView, "Please, fill feilds with correct username or password!", "Empty Feilds", JOptionPane.ERROR_MESSAGE);
             }
+            
+            else if (loginDAO.executeLoginQuery(userModel)) {
+                JOptionPane.showMessageDialog(loginView, "You have sucessfully logged in!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
+                new AdminHomeView();
+                loginView.dispose();
+            } 
             else{
                 JOptionPane.showMessageDialog(loginView, "Please, enter correct username or password!", "Invalid", JOptionPane.ERROR_MESSAGE);
             }
@@ -45,7 +54,13 @@ public class LoginController{
         public void actionPerformed(ActionEvent e) {
             String username = loginView.getUsername();
             String password = loginView.getPassword();
-            LoginModel userModel = new LoginModel(username, password);  
+            LoginModel userModel = new LoginModel(username, password);
+            if (loginDAO.executeForgotPasswordQuery(userModel)) {
+                    
+            } 
+            else{
+                JOptionPane.showMessageDialog(loginView, "Please, enter correct username!", "Invalid", JOptionPane.ERROR_MESSAGE);                
+            }   
         }
     }
     

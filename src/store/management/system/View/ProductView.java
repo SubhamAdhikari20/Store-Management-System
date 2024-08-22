@@ -217,11 +217,20 @@ public class ProductView extends CustomPanel {
             return null; // No row selected
         }
 
-        String productId = (String) productTable.getValueAt(selectedRow, 0);
-        String productName = (String) productTable.getValueAt(selectedRow, 1);
-        String category = (String) productTable.getValueAt(selectedRow, 2);
-        BigDecimal price = (BigDecimal) productTable.getValueAt(selectedRow, 4);
-        int quantity = (int) productTable.getValueAt(selectedRow, 3);
+        // Convert productId to String (if originally Integer)
+String productId = String.valueOf(productTable.getValueAt(selectedRow, 0));
+
+// productName is already a String, so no conversion needed
+String productName = (String) productTable.getValueAt(selectedRow, 1);
+
+// category is already a String, so no conversion needed
+String category = (String) productTable.getValueAt(selectedRow, 2);
+
+// price is already a BigDecimal, so no conversion needed
+BigDecimal price = (BigDecimal) productTable.getValueAt(selectedRow, 4);
+
+// Convert quantity to int (if originally Integer)
+int quantity = (int) productTable.getValueAt(selectedRow, 3);
         
         
         return new ProductModel(productId, productName, category, price, quantity);
@@ -229,10 +238,18 @@ public class ProductView extends CustomPanel {
 
     // Method to populate fields based on the selected row
     private void populateFields(int row) {
-        productIdField.setText((String) productTable.getValueAt(row, 0));
-        productNameField.setText((String) productTable.getValueAt(row, 1));
-        categoryField.setText((String) productTable.getValueAt(row, 2));
-        priceField.setText(String.valueOf(productTable.getValueAt(row, 4)));
-        quantityField.setText(String.valueOf(productTable.getValueAt(row, 3)));
+        // Typecasting productId which is int to String
+    productIdField.setText(String.valueOf((Integer) productTable.getValueAt(row, 0)));
+    
+    // Casting productName and category, which are Strings
+    productNameField.setText((String) productTable.getValueAt(row, 1));
+    categoryField.setText((String) productTable.getValueAt(row, 2));
+    
+    // Typecasting price, which is BigDecimal to String
+    priceField.setText(String.valueOf((BigDecimal) productTable.getValueAt(row, 4)));
+    
+    // Typecasting quantity, which is int to String
+    quantityField.setText(String.valueOf((Integer) productTable.getValueAt(row, 3)));
+
     }
 }

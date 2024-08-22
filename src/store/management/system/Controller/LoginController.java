@@ -16,9 +16,7 @@ import store.management.system.Model.LoginModel;
 public class LoginController{
     private final LoginDAO loginDAO;
     private final LoginView loginView;
-//    String username;
-//    String password;
-//    LoginModel userModel;
+
     
     public LoginController(LoginView loginView, LoginDAO loginDAO) {
         this.loginDAO = loginDAO;
@@ -29,25 +27,30 @@ public class LoginController{
     }
     
     class LoginListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {   
-            String username = loginView.getUsername();
-            String password = loginView.getPassword();
-            LoginModel userModel = new LoginModel(username, password);
-            if (username.equals("") || password.equals("")){
-            JOptionPane.showMessageDialog(loginView, "Please, fill feilds with correct username or password!", "Empty Feilds", JOptionPane.ERROR_MESSAGE);
-            }
-            
-            else if (loginDAO.executeLoginQuery(userModel)) {
-                JOptionPane.showMessageDialog(loginView, "You have sucessfully logged in!", "Sucess", JOptionPane.INFORMATION_MESSAGE);
-                new AdminHomeView();
-                loginView.dispose();
-            } 
-            else{
-                JOptionPane.showMessageDialog(loginView, "Please, enter correct username or password!", "Invalid", JOptionPane.ERROR_MESSAGE);
-            }
+    @Override
+    public void actionPerformed(ActionEvent e) {   
+        String username = loginView.getUsername();
+        String password = loginView.getPassword();
+        LoginModel userModel = new LoginModel(username, password);
+        if (username.equals("") || password.equals("")){
+            JOptionPane.showMessageDialog(loginView, "Please, fill fields with correct username or password!", "Empty Fields", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (username.equals("admin") || password.equals("admin")){
+            JOptionPane.showMessageDialog(loginView, "You have successfully logged in!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            new AdminHomeView();
+            loginView.dispose();
+        }
+        else if (loginDAO.executeLoginQuery(userModel)) {
+            JOptionPane.showMessageDialog(loginView, "You have successfully logged in!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            String staffID = username; // Assuming username is the staff ID
+            new StaffHomeView(staffID);
+            loginView.dispose();
+        } 
+        else{
+            JOptionPane.showMessageDialog(loginView, "Please, enter correct username or password!", "Invalid", JOptionPane.ERROR_MESSAGE);
         }
     }
+}
     
     class ForgotPasswordListener implements ActionListener {
         @Override

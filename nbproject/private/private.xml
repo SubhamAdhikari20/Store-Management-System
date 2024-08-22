@@ -5,13 +5,19 @@
         <group>
             <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/View/AdminStaffView.java</file>
             <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/Controller/AdminStaffController.java</file>
+            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/Model/ProductModel.java</file>
             <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/View/AdminHomeView.java</file>
-            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/View/AdminProductView.java</file>
-            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/Main.java</file>
-            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/View/AdminInvoiceView.java</file>
-            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/Controller/AdminHomeController.java</file>
+            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/DAO/ProductDAO.java</file>
+            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/Model/AdminStaffModel.java</file>
+            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/DAO/AdminStaffDAO.java</file>
+            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/View/InvoiceView.java</file>
             <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/Controller/ProductController.java</file>
-            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/Controller/LoginController.java</file>
+            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/DAO/InvoiceDAO.java</file>
+            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/Main.java</file>
+            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/Controller/AdminHomeController.java</file>
+            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/View/ProductView.java</file>
+            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/Model/InvoiceModel.java</file>
+            <file>file:/F:/02%20-%20Year%201%20Sem%202/Java%20Netbeans/Store%20Management%20System/src/store/management/system/Controller/InvoiceController.java</file>
         </group>
     </open-files>
 </project-private>

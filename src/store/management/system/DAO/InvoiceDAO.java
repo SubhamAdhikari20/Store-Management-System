@@ -45,12 +45,20 @@ public class InvoiceDAO {
 
         List<Object> parameters = new ArrayList<>();
 
-        if (!invoiceModel.getProductField().isEmpty()) {
-            query.append(" AND (product_id = ? OR product_name = ?)");
-            parameters.add(invoiceModel.getProductField());
-            parameters.add(invoiceModel.getProductField());
+        // Check if productID is specified
+        if (invoiceModel.getProductID() > 0) { // Assuming productID is an int and should be greater than 0
+            query.append(" AND product_id = ?");
+            parameters.add(invoiceModel.getProductID());
         }
-        if (!invoiceModel.getCategoryField().equals("Select")) {  // Adjust this condition
+
+        // Check if productName is specified
+        if (invoiceModel.getProductName() != null && !invoiceModel.getProductName().trim().isEmpty()) {
+            query.append(" AND product_name LIKE ?");
+            parameters.add("%" + invoiceModel.getProductName().trim() + "%");
+        }
+
+        // Check if the category is specified and not the default "Select"
+        if (invoiceModel.getCategoryField()!= null && !invoiceModel.getCategoryField().equalsIgnoreCase("Select")) {
             query.append(" AND category = ?");
             parameters.add(invoiceModel.getCategoryField());
         }
@@ -76,7 +84,7 @@ public class InvoiceDAO {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Invalid", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
         return data.toArray(new Object[0][]);
@@ -154,5 +162,35 @@ public class InvoiceDAO {
         return false;
     }
     
+    
+    
+    public List<InvoiceModel> fetchInvoiceDetails() {
+        String query = "SELECT * FROM invoice_details ORDER BY created_at DESC LIMIT 1;";
+        List<InvoiceModel> invoiceDetails = new ArrayList<>();
 
+        try (PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            // Iterate over the ResultSet and populate the list
+            while (resultSet.next()) {
+                int invoiceId = Integer.parseInt(resultSet.getString("invoice_id"));
+                int product_id = Integer.parseInt(resultSet.getString("product_id"));
+                String productName = resultSet.getString("product_name");
+                String category = resultSet.getString("category");
+                int quantity = Integer.parseInt(resultSet.getString("quantity"));
+
+                BigDecimal price = new BigDecimal(resultSet.getString("price"));
+                BigDecimal total = new BigDecimal(resultSet.getString("total"));
+    
+                InvoiceModel detail = new InvoiceModel(invoiceId, product_id, productName, category, quantity, price, total);
+                detail.setTotalField(total);  // Assuming your model has a method to set the total
+                invoiceDetails.add(detail);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return invoiceDetails;
+    }
 }

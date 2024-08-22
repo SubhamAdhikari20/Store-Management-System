@@ -23,9 +23,9 @@ public class AdminHomeView extends JFrame{
     CardLayout cardLayout;
     AdminStaffView staffPanel;
     AdminStaffController staffController;
-    AdminInvoiceView invoicePanel;
-    AdminProductView productPanel;
-    AddStaffPanel addStaffPanel;
+    InvoiceView invoicePanel;
+    ProductView productPanel;
+
     
     
     
@@ -131,7 +131,7 @@ public class AdminHomeView extends JFrame{
         invoiceButton.setForeground(Color.black);
         invoiceButton.setBackground(new Color(241, 233, 233));
         invoiceButton.setContentAreaFilled(false);
-        ImageIcon invoiceButtonIcon = new ImageIcon(ClassLoader.getSystemResource("store/management/system/View/Images/staff.png"));
+        ImageIcon invoiceButtonIcon = new ImageIcon(ClassLoader.getSystemResource("store/management/system/View/Images/bill.png"));
         Image invoiceButtonImage = invoiceButtonIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         invoiceButtonIcon = new ImageIcon(invoiceButtonImage);
         invoiceButton.setIcon(invoiceButtonIcon);
@@ -145,7 +145,7 @@ public class AdminHomeView extends JFrame{
         productButton.setForeground(Color.black);
         productButton.setBackground(new Color(241, 233, 233));
         productButton.setContentAreaFilled(false);
-        ImageIcon productButtonIcon = new ImageIcon(ClassLoader.getSystemResource("store/management/system/View/Images/staff.png"));
+        ImageIcon productButtonIcon = new ImageIcon(ClassLoader.getSystemResource("store/management/system/View/Images/product_logo.png"));
         Image productButtonIconImage = productButtonIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         productButtonIcon = new ImageIcon(productButtonIconImage);
         productButton.setIcon(productButtonIcon);
@@ -177,8 +177,8 @@ public class AdminHomeView extends JFrame{
         // Panels to be added
         homePanel = new HomePanel();
         staffPanel = new AdminStaffView(this);      // Pass AdminHomeView instance to AdminStaffView
-        invoicePanel = new AdminInvoiceView();
-        productPanel = new AdminProductView();
+        invoicePanel = new InvoiceView();
+        productPanel = new ProductView();
 
         // Adding the panel in CardLayout
         mainPanel.add(homePanel, "Home");
@@ -188,7 +188,7 @@ public class AdminHomeView extends JFrame{
 
         
         // Set initial panel
-        cardLayout.show(mainPanel, "Home");
+        cardLayout.show(mainPanel, "Invoice");
         
         
         
